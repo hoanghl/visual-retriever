@@ -1,13 +1,12 @@
-<p style="font-family: monospace;
-    font-size: 50px;
-    align: 'center';
-    text-align: center;">Visual retriever</p>
-
 <p align="center">
-    <img src="docs/logo.svg" width="700">
+  <h1 align="center">Visual retriever</h1>
 </p>
 
-# Introduction
+<p align="center">
+    <img src="docs/diagram.svg" width="700">
+</p>
+
+## Introduction
 
 Retriever facilitates LLM and vector database to retrieve image and video.
 
