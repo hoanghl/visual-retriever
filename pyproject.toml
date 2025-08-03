@@ -1,0 +1,57 @@
+[project]
+name = "visual-retriever"
+version = "1.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "einops>=0.8.1",
+    "fastapi[standard]>=0.115.12",
+    "huggingface-hub>=0.29.1",
+    "langchain>=0.3.27",
+    "langchain-anthropic>=0.3.18",
+    "langchain-community>=0.3.27",
+    "langchain-ollama>=0.3.6",
+    "lightning>=2.5.0.post0",
+    "loguru>=0.7.3",
+    "ollama>=0.5.1",
+    "pandas>=2.2.3",
+    "pickleshare>=0.7.5",
+    "psycopg>=3.2.9",
+    "pymilvus>=2.5.12",
+    "python-dotenv>=1.1.0",
+    "pyyaml>=6.0.2",
+    "rich>=13.9.4",
+    "scikit-learn>=1.6.1",
+    "sentencepiece>=0.2.0",
+    "transformers>=4.49.0",
+]
+
+[dependency-groups]
+dev = [
+    "tensorboard>=2.18.0",
+    "wandb>=0.19.7",
+    "polars>=1.21.0",
+    "seaborn>=0.13.2",
+    "torch-tb-profiler>=0.4.3",
+    "ipykernel>=6.29.5",
+    "ipython>=8.31.0",
+    "ipywidgets>=8.1.5",
+    "matplotlib>=3.10.0",
+    "rich>=13.9.4",
+    "ruff>=0.9.9",
+    "jupyterlab>=4.3.5",
+    "notebook>=7.3.2",
+    "faiss-cpu>=1.10.0",
+    "pytest>=8.3.5",
+]
+
+[tool.pytest.ini_options]
+pythonpath = [
+  "."
+]
+
+
+[tool.ruff]
+# Allow lines to be as long as 120.
+line-length = 120
