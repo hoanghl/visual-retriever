@@ -1,13 +1,7 @@
-<style>
-.title {
-    font-family: monospace;
+<p style="font-family: monospace;
     font-size: 50px;
-    align: "center";
-    text-align: center;
-}
-</style>
-
-<p class="title">Visual retriever</p>
+    align: 'center';
+    text-align: center;">Visual retriever</p>
 
 <p align="center">
     <img src="docs/logo.svg" width="700">
