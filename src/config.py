@@ -11,11 +11,11 @@ load_dotenv()
 FASTAPI_ENV = os.getenv("FASTAPI_ENV", "development")
 API_VERSION = os.getenv("VERSION")
 
-PORT = os.getenv("DB_PORT")
-PWD = os.getenv("DB_PWD")
-USER = os.getenv("DB_USER")
+DB_PORT = os.getenv("DB_PORT")
+DB_PWD = os.getenv("DB_PWD")
+DB_USER = os.getenv("DB_USER")
 DB_NAME = os.getenv("DB_NAME")
-HOST = os.getenv("DB_HOST")
+DB_HOST = os.getenv("DB_HOST")
 
 TABLE_ITEMS = os.getenv("TABLE_ITEMS", "items")
 
@@ -39,7 +39,6 @@ match dtype:
 # =================================================
 # Configs for embedding store
 # =================================================
-EMBDSTORE_COLL_NAME = os.getenv("EMBDSTORE_COLL_NAME")
 EMBDSTORE_HOST = os.getenv("EMBDSTORE_HOST")
 EMBDSTORE_PORT = os.getenv("EMBDSTORE_PORT")
 
