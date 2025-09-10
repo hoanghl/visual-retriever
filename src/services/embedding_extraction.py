@@ -1,4 +1,3 @@
-import os
 from io import BytesIO
 
 import torch
@@ -15,15 +14,13 @@ class EmbdExtractionUtils:
         # Load model and other processing utilities
         logger.info("Load jit model and associated utilities")
 
-        logger.debug(os.getcwd())
-
-        self.loaded_model = torch.jit.load(config.PATH_MODEL, map_location="cpu").to(
+        self.loaded_model = torch.jit.load(config.EMBD_MODEL_PATH, map_location="cpu").to(
             dtype=config.DTYPE, device=config.DEVICE
         )
         self.loaded_model.eval()
 
-        self.processor = CLIPProcessor.from_pretrained(config.MODEL_NAME)
-        self.tokenizer = CLIPTokenizerFast.from_pretrained(config.MODEL_NAME)
+        self.processor = CLIPProcessor.from_pretrained(config.EMBD_MODEL_NAME)
+        self.tokenizer = CLIPTokenizerFast.from_pretrained(config.EMBD_MODEL_NAME)
 
     def get_embd_text(self, text: str | list[str]) -> list[ndarray]:
         token_ids = self.tokenizer(text, return_tensors="pt", padding="max_length", truncation=True)
@@ -60,7 +57,7 @@ class EmbdExtractionUtils:
         out_sample_image = self.processor(images=image, return_tensors="pt")
         embd = (
             self.loaded_model
-            .get_image_features(out_sample_image["pixel_values"].to("mps"))
+            .get_image_features(out_sample_image["pixel_values"].to(config.DEVICE))
             .to("cpu")
             .detach()
             .numpy()

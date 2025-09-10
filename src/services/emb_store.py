@@ -35,6 +35,7 @@ class EmbdStoreController:
         self.embd_dim = embd_dim
 
         self.collection = self._initialize()
+        self.create_index()
 
     def _initialize(self) -> Collection:
         # Connect to embedding store

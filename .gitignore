@@ -204,6 +204,7 @@ logs/
 data/
 experiments/
 res/
+artifacts/
 .vscode/
 docs/*.bkp
 .openapi-generator/

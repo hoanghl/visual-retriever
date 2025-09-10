@@ -17,15 +17,20 @@ DB_USER = os.getenv("DB_USER")
 DB_NAME = os.getenv("DB_NAME")
 DB_HOST = os.getenv("DB_HOST")
 
-TABLE_ITEMS = os.getenv("TABLE_ITEMS", "items")
+
+# =================================================
+# Configs for Keyword Extractor
+# =================================================
+KEYWORD_MODEL_NAME = os.getenv("KEYWORD_MODEL_NAME")
+PROMPTS_PATH = os.getenv("PROMPTS_PATH")
 
 
 # =================================================
-# Configs for embedding model
+# Configs for Embedding Extractor
 # =================================================
-MODEL_NAME = os.getenv("MODEL_NAME", "openai/clip-vit-base-patch32")
-PATH_MODEL: str = os.getenv("PATH_MODEL")
-DEVICE: str = os.getenv("DEVICE", "cpu")
+DEVICE = os.getenv("DEVICE", "cpu")
+EMBD_MODEL_NAME = os.getenv("EMBD_MODEL_NAME", "openai/clip-vit-base-patch32")
+EMBD_MODEL_PATH = os.getenv("EMBD_MODEL_PATH")
 dtype = os.getenv("DTYPE", "float16")
 match dtype:
     case "float32":

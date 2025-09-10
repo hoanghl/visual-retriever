@@ -3,8 +3,9 @@ name = "visual-retriever"
 version = "1.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.13"
 dependencies = [
+    "accelerate>=1.10.1",
     "einops>=0.8.1",
     "fastapi[standard]>=0.115.12",
     "huggingface-hub>=0.29.1",
@@ -21,9 +22,13 @@ dependencies = [
     "pymilvus>=2.5.12",
     "python-dotenv>=1.1.0",
     "pyyaml>=6.0.2",
+    "qwen-vl-utils>=0.0.11",
     "rich>=13.9.4",
     "scikit-learn>=1.6.1",
     "sentencepiece>=0.2.0",
+    "sqlmodel>=0.0.24",
+    "torch>=2.8.0",
+    "torchvision>=0.23.0",
     "transformers>=4.49.0",
 ]
 
