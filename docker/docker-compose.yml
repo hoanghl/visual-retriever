@@ -1,18 +1,18 @@
 services:
-  # db:
-  # image: pgvector/pgvector:pg17
-  # container_name: database
-  # ports:
-  #   - ${DB_PORT}:5432
-  # volumes:
-  #   - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-  # environment:
-  #   - POSTGRES_PASSWORD=${DB_PWD}
-  #   - POSTGRES_USER=${DB_USER}
-  #   - POSTGRES_DB=${DB_NAME}
-  #   - PGTZ=Europe/Helsinki
+  db:
+    image: pgvector/pgvector:pg17
+    container_name: xbutler-attribute-db
+    ports:
+      - ${DB_PORT}:5432
+    # volumes:
+    #   - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      - POSTGRES_PASSWORD=${DB_PWD}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_DB=${DB_NAME}
+      - PGTZ=Europe/Helsinki
   embedding-store:
-    container_name: embedding-store
+    container_name: xbutler-embedding-store
     image: milvusdb/milvus:v2.5.14
     environment:
       - ETCD_USE_EMBED=true
@@ -28,12 +28,15 @@ services:
       retries: 3
       start_period: 90s
     ports:
-      - 19530:19530
+      - ${EMBDSTORE_PORT}:19530
       - 9091:9091
       - 2379:2379
     volumes:
       - ${EMBDSTORE_STORAGE}:/var/lib/milvus
       - ./embedEtcd.yaml:/milvus/configs/embedEtcd.yaml
+    networks:
+      - exposed
+      - shared
     entrypoint: ["milvus", "run", "standalone"]
     # entrypoint: ["tail", "-f", "/dev/null"]
   # object-store:
@@ -49,3 +52,10 @@ services:
   #   volumes:
   #     - ${OBJSTORE_STORAGE}:/data
   #   command: server /data --console-address ":9001"
+
+networks:
+  shared:
+    external: true
+    name: xbutler
+  exposed:
+    driver: bridge

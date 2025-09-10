@@ -11,21 +11,26 @@ load_dotenv()
 FASTAPI_ENV = os.getenv("FASTAPI_ENV", "development")
 API_VERSION = os.getenv("VERSION")
 
-PORT = os.getenv("DB_PORT")
-PWD = os.getenv("DB_PWD")
-USER = os.getenv("DB_USER")
+DB_PORT = os.getenv("DB_PORT")
+DB_PWD = os.getenv("DB_PWD")
+DB_USER = os.getenv("DB_USER")
 DB_NAME = os.getenv("DB_NAME")
-HOST = os.getenv("DB_HOST")
-
-TABLE_ITEMS = os.getenv("TABLE_ITEMS", "items")
+DB_HOST = os.getenv("DB_HOST")
 
 
 # =================================================
-# Configs for embedding model
+# Configs for Keyword Extractor
 # =================================================
-MODEL_NAME = os.getenv("MODEL_NAME", "openai/clip-vit-base-patch32")
-PATH_MODEL: str = os.getenv("PATH_MODEL")
-DEVICE: str = os.getenv("DEVICE", "cpu")
+KEYWORD_MODEL_NAME = os.getenv("KEYWORD_MODEL_NAME")
+PROMPTS_PATH = os.getenv("PROMPTS_PATH")
+
+
+# =================================================
+# Configs for Embedding Extractor
+# =================================================
+DEVICE = os.getenv("DEVICE", "cpu")
+EMBD_MODEL_NAME = os.getenv("EMBD_MODEL_NAME", "openai/clip-vit-base-patch32")
+EMBD_MODEL_PATH = os.getenv("EMBD_MODEL_PATH")
 dtype = os.getenv("DTYPE", "float16")
 match dtype:
     case "float32":
@@ -39,7 +44,6 @@ match dtype:
 # =================================================
 # Configs for embedding store
 # =================================================
-EMBDSTORE_COLL_NAME = os.getenv("EMBDSTORE_COLL_NAME")
 EMBDSTORE_HOST = os.getenv("EMBDSTORE_HOST")
 EMBDSTORE_PORT = os.getenv("EMBDSTORE_PORT")
 

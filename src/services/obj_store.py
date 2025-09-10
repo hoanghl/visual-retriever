@@ -20,7 +20,7 @@ class ObjStoreUtils:
         path = self._get_path(filename)
 
         with open(path, "wb+") as file:
-            file.write(data)
+            file.write(data.getvalue())
 
     def load(self, filename: str) -> bytes:
         path = self._get_path(filename)
