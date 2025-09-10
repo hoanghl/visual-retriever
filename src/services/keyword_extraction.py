@@ -1,9 +1,11 @@
 import base64
+import io
 import json
 import re
 
 import torch
 from loguru import logger
+from PIL import Image
 from qwen_vl_utils import process_vision_info
 from transformers import AutoProcessor, Qwen2_5_VLForConditionalGeneration
 
@@ -23,6 +25,15 @@ class KeywordExtractionUtils:
 
     def extract_keyword(self, img: bytes) -> list[dict]:
         # output: [{'word': 'abc', 'category': 'def'}]
+
+        # Reduce image quality
+        buffer = io.BytesIO()
+        img_stream = io.BytesIO(img)
+        img_tmp = Image.open(img_stream)
+        img_tmp = img_tmp.resize((img_tmp.width // 2, img_tmp.height // 2))
+        img_tmp.save(buffer, quality=20, optimize=True, format="JPEG")
+
+        img = buffer.getvalue()
 
         # Prepare image and text as input
         img_base64 = base64.b64encode(img).decode("utf-8")
